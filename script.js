@@ -139,6 +139,7 @@ const openFullscreen = (elem) => {
     elem.msRequestFullscreen();
   }
   fullscreenIcon.setAttribute('class', 'fas fa-compress')
+  video.classList.add('video-fullscreen')
 }
 
 /* Close fullscreen */
@@ -151,6 +152,7 @@ const closeFullscreen = () => {
     document.msExitFullscreen();
   }
   fullscreenIcon.setAttribute('class', 'fas fa-expand')
+  video.classList.remove('video-fullscreen')
 }
 
 const toggleFullscreen = () => {
