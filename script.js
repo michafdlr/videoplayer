@@ -127,14 +127,49 @@ playbackRate.addEventListener('change', (event) => {
 
 
 // Fullscreen ------------------------------- //
-const toggleFullscreen = () => {
-  if (document.fullscreenElement) {
-    document.exitFullscreen();
-    fullscreenIcon.setAttribute('class', 'fas fa-expand')
-  } else {
-    player.requestFullscreen();
-    fullscreenIcon.setAttribute('class', 'fas fa-compress')
-    }
+
+let fullscreen = false;
+
+const openFullscreen = (elem) => {
+  if (elem.requestFullscreen) {
+    elem.requestFullscreen();
+  } else if (elem.webkitRequestFullscreen) { /* Safari */
+    elem.webkitRequestFullscreen();
+  } else if (elem.msRequestFullscreen) { /* IE11 */
+    elem.msRequestFullscreen();
+  }
+  fullscreenIcon.setAttribute('class', 'fas fa-compress')
 }
+
+/* Close fullscreen */
+const closeFullscreen = () => {
+  if (document.exitFullscreen) {
+    document.exitFullscreen();
+  } else if (document.webkitExitFullscreen) { /* Safari */
+    document.webkitExitFullscreen();
+  } else if (document.msExitFullscreen) { /* IE11 */
+    document.msExitFullscreen();
+  }
+  fullscreenIcon.setAttribute('class', 'fas fa-expand')
+}
+
+const toggleFullscreen = () => {
+  if (!fullscreen) {
+    openFullscreen(player)
+  } else {
+    closeFullscreen()
+  }
+  fullscreen = !fullscreen
+}
+
+// const toggleFullscreen = () => {
+//   if (document.fullscreenElement) {
+//     document.exitFullscreen();
+//     fullscreenIcon.setAttribute('class', 'fas fa-expand')
+//   } else {
+//     player.requestFullscreen();
+//     fullscreenIcon.setAttribute('class', 'fas fa-compress')
+//     }
+// }
 
 fullscreenBtn.addEventListener('click', toggleFullscreen)
