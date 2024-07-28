@@ -11,6 +11,44 @@ const duration = document.querySelector('.time-duration')
 const playbackRate = document.querySelector('.player-speed')
 const fullscreenBtn = document.querySelector('.fullscreen')
 const fullscreenIcon = document.getElementById('fullscreen-icon')
+const files = document.getElementById('file')
+const uploadBtn = document.getElementById('upload')
+const randomBtn = document.getElementById('select')
+
+
+let movies = null;
+
+// select movies
+
+const randomInt = (max) => {
+  return Math.floor(max * Math.random())
+}
+
+uploadBtn.addEventListener('click', (event) => {
+  movies = Array.from(files.files);
+  const popup = document.getElementById("popup");
+  popup.classList.add("show");
+  setTimeout(() => {
+    popup.classList.remove("show");
+  }, 2000);
+  console.log(movies);
+  event.preventDefault();
+})
+
+randomBtn.addEventListener('click', (event) => {
+  if (movies === null) {
+    alert('Choose the video files first!')
+  } else if (!movies.length) {
+    alert('All movies played!')
+  } else {
+    const element = randomInt(movies.length);
+    console.log(element);
+    video.src = URL.createObjectURL(movies[element]);
+    movies.splice(element, 1);
+  }
+  event.preventDefault();
+})
+
 
 // Play & Pause ----------------------------------- //
 const showPlayIcon = () => {

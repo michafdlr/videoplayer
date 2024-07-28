@@ -15,12 +15,116 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   font-family: Helvetica, sans-serif;
+}
+
+form {
+  margin-bottom: 10px;
+}
+
+input::file-selector-button {
+  font-weight: bold;
+  background-color: rgb(169, 255, 94);
+  border: 2px solid rgb(0, 0, 0);
+  border-radius: 5px;
+  padding: 0.5em;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+input::file-selector-button:hover {
+  filter: brightness(0.9);
+}
+
+/* input[type="file"] {
+  background-color: whitesmoke;
+} */
+
+/* .custom-file-upload {
+  font-size: 15px;
+  border: 2px solid rgb(0, 0, 0);
+  box-shadow: 0px 5px 10px 1px rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  display: inline-block;
+  padding: 5px 10px;
+  cursor: pointer;
+  background: rgb(169, 255, 94);
+  margin-right: 10px;
+} */
+
+button {
+  font-size: 15px;
+  border: 2px solid rgb(0, 0, 0);
+  border-radius: 5px;
+  background-color: rgb(169, 255, 94);
+  padding: 5px;
+  box-shadow: 0px 5px 10px 1px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+
+button:hover {
+  transition: all 0.5s;
+  filter: brightness(0.9);
+}
+
+button:active {
+  transition: all 0.5s;
+  transform: translate(2px, 3px);
+  box-shadow: none;
 }
 
 .fas {
   color: var(--font-color);
   font-size: 35px;
+}
+
+.fa-upload, .fa-random {
+  color: black;
+  font-size: 20px;
+}
+
+.popuptext {
+  visibility: hidden;
+  width: 160px;
+  background-color: rgba(169, 255, 94, 0.6);
+  color: black;
+  text-align: center;
+  border-radius: 5px;
+  padding: 8px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -80px;
+}
+
+.popuptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: rgb(169, 255, 94, 0.6) transparent transparent transparent;
+}
+
+.show {
+  visibility: visible;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity:1 ;}
 }
 
 .player {
