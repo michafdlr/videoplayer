@@ -202,14 +202,14 @@ const toggleFullscreen = () => {
   fullscreen = !fullscreen
 }
 
-// const toggleFullscreen = () => {
-//   if (document.fullscreenElement) {
-//     document.exitFullscreen();
-//     fullscreenIcon.setAttribute('class', 'fas fa-expand')
-//   } else {
-//     player.requestFullscreen();
-//     fullscreenIcon.setAttribute('class', 'fas fa-compress')
-//     }
-// }
-
 fullscreenBtn.addEventListener('click', toggleFullscreen)
+
+
+document.addEventListener('fullscreenchange', (event) => {
+  console.log(event);
+  if (!document.fullscreenElement) {
+    fullscreenIcon.setAttribute('class', 'fas fa-expand')
+    video.classList.remove('video-fullscreen')
+    fullscreen = false;
+  }
+})
