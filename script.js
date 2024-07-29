@@ -45,6 +45,7 @@ randomBtn.addEventListener('click', (event) => {
     console.log(element);
     video.src = URL.createObjectURL(movies[element]);
     movies.splice(element, 1);
+    showPlayIcon();
   }
   event.preventDefault();
 })
